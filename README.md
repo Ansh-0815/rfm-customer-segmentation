@@ -135,6 +135,3 @@ jupyter notebook notebook/rfm_analysis.ipynb
 - **Python:** pandas, matplotlib, seaborn (analysis & visualization)
 - **Environment:** Jupyter Notebook
 
-## License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
