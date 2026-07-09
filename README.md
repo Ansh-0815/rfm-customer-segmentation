@@ -11,7 +11,7 @@ SQL + Python project that segments retail customers using **Recency, Frequency, 
 
 ## Business Problem
 
-Many companies spend significant marketing budgets treating every customer the same. However, customers have very different purchasing behaviors and lifetime values. RFM analysis groups customers into meaningful business segments — such as Champions, Loyal Customers, At Risk, and Lost Customers — so that businesses can:
+Many companies spend significant marketing budgets treating every customer the same. However, customers have very different purchasing behaviors and lifetime values. RFM analysis groups customers into meaningful business segments - such as Champions, Loyal Customers, At Risk, and Lost Customers - so that businesses can:
 
 - Improve customer retention
 - Reduce customer churn
@@ -23,7 +23,7 @@ Many companies spend significant marketing budgets treating every customer the s
 
 **Source:** [Online Retail II Dataset](https://archive.ics.uci.edu/dataset/502/online+retail+ii) (UCI Machine Learning Repository)
 
-Historical transactions from a UK-based online retailer, covering **December 2009 – December 2011**.
+Historical transactions from a UK-based online retailer, covering **December 2009 - December 2011**.
 
 The raw dataset is not included in this repo (~45 MB). Download `online_retail_II.csv` from the link above if you want to re-run the SQL pipeline from scratch. The cleaned, customer-level output of that pipeline (`data/rfm_base.csv`) **is** included, so the notebook can be run immediately without MySQL.
 
@@ -45,7 +45,7 @@ rfm-customer-segmentation/
 
 ## Methodology
 
-### 1. Data Cleaning (SQL — `sql/rfm_queries.sql`)
+### 1. Data Cleaning (SQL - `sql/rfm_queries.sql`)
 
 Raw transactions are loaded into MySQL and cleaned by removing:
 
@@ -66,26 +66,26 @@ For each customer, the cleaned transactions are aggregated into:
 
 The result is exported to `data/rfm_base.csv` and used as the input to the Python analysis.
 
-### 3. Scoring & Segmentation (Python — `notebook/rfm_analysis.ipynb`)
+### 3. Scoring & Segmentation (Python - `notebook/rfm_analysis.ipynb`)
 
-- Each customer is scored 1–4 on Recency, Frequency, and Monetary using quartiles (`pd.qcut`).
+- Each customer is scored 1-4 on Recency, Frequency, and Monetary using quartiles (`pd.qcut`).
 - Scores are combined into an RFM score and mapped to business segments (Champions, Loyal Customers, Big Spenders, Potential Loyalists, At Risk, Lost Customers, Others) using rule-based logic.
 - Segment-level summary statistics and 8 visualizations (distribution, revenue, frequency, recency, correlation, etc.) are used to validate the segmentation and derive business recommendations.
 
 ## How to Reproduce
 
-### Option A — Just run the notebook (fastest)
+### Option A - Just run the notebook (fastest)
 
 The cleaned `data/rfm_base.csv` is already included, so you can skip the SQL step entirely.
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/Ansh-0815/rfm-customer-segmentation
 cd rfm-customer-segmentation
 pip install -r requirements.txt
 jupyter notebook notebook/rfm_analysis.ipynb
 ```
 
-### Option B — Rebuild from raw data
+### Option B - Rebuild from raw data
 
 1. Download `online_retail_II.csv` from the [UCI dataset page](https://archive.ics.uci.edu/dataset/502/online+retail+ii) and note its path.
 2. Open `sql/rfm_queries.sql`, update the `LOAD DATA LOCAL INFILE` path (and the `INTO OUTFILE` path for the export step) to match your machine.
@@ -99,7 +99,7 @@ jupyter notebook notebook/rfm_analysis.ipynb
 
 - Customer value is highly concentrated: a relatively small **Champions** segment drives a disproportionate share of total revenue.
 - A large number of customers fall into **At Risk** or **Lost** categories, representing a significant, currently-unaddressed churn risk.
-- **Frequency and Monetary** are positively correlated — customers who order more often also tend to spend more per relationship, reinforcing the value of loyalty-driven retention strategies.
+- **Frequency and Monetary** are positively correlated - customers who order more often also tend to spend more per relationship, reinforcing the value of loyalty-driven retention strategies.
 
 ## Business Recommendations
 
@@ -114,7 +114,7 @@ jupyter notebook notebook/rfm_analysis.ipynb
 
 - Customer demographics were unavailable.
 - Product categories were not analyzed.
-- Seasonal purchasing behavior was not considered.
+- Seasonal purchasing behavior was not considered.-
 - Marketing campaign history was unavailable.
 - Customer Lifetime Value (CLV) was not modeled.
 - Segmentation is rule-based rather than machine-learning driven.
