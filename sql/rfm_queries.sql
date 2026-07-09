@@ -1,5 +1,5 @@
 -- ============================================================
--- RFM Customer Segmentation — SQL Data Preparation
+-- RFM Customer Segmentation - SQL Data Preparation
 -- Dataset: Online Retail II (UCI Machine Learning Repository)
 -- ============================================================
 
